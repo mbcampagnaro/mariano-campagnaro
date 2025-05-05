@@ -4,12 +4,85 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mariano Boff Campagnaro</title>
+  <title>Leitura – Mariano Boff Campagnaro</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="container">
     <h1>Mariano Boff Campagnaro</h1>
+    <section id="reading-tracker">
+      <h2>Desempenho de Leitura</h2>
+      <progress id="reading-progress" value="0" max="48"></progress>
+      <span id="progress-text">0%</span>
+      <table id="books-table">
+        <thead>
+          <tr><th>Lido?</th><th>Livro</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><input type="checkbox" checked></td><td>Transferência de Calor e Massa</td></tr>
+          <tr><td><input type="checkbox" checked></td><td>Fundamentos de Física</td></tr>
+          <tr><td><input type="checkbox" checked></td><td>Estática</td></tr>
+          <tr><td><input type="checkbox"></td><td>Código Limpo</td></tr>
+          <tr><td><input type="checkbox" checked></td><td>Estratégia Competitiva</td></tr>
+          <tr><td><input type="checkbox" checked></td><td>As Cartas de Bezos</td></tr>
+          <tr><td><input type="checkbox"></td><td>O Jeito Warren Buffett de Investir</td></tr>
+          <tr><td><input type="checkbox"></td><td>Feitas para Durar</td></tr>
+          <tr><td><input type="checkbox"></td><td>Paixão por Vencer</td></tr>
+          <tr><td><input type="checkbox"></td><td>A Conduta da Vida</td></tr>
+          <tr><td><input type="checkbox"></td><td>Não É Óbvio</td></tr>
+          <tr><td><input type="checkbox" checked></td><td>Elon Musk</td></tr>
+          <tr><td><input type="checkbox"></td><td>Confissões</td></tr>
+          <tr><td><input type="checkbox"></td><td>Manual de Persuasão do FBI</td></tr>
+          <tr><td><input type="checkbox" checked></td><td>Leonardo da Vinci</td></tr>
+          <tr><td><input type="checkbox" checked></td><td>Diário Estoico</td></tr>
+          <tr><td><input type="checkbox" checked></td><td>Os Segredos da Mente Milionária</td></tr>
+          <tr><td><input type="checkbox"></td><td>O Sistema Amazon</td></tr>
+          <tr><td><input type="checkbox" checked></td><td>Você Fica Tão Sozinho Às Vezes Que Até Faz Sentido</td></tr>
+          <tr><td><input type="checkbox" checked></td><td>O Ego É Seu Inimigo</td></tr>
+          <tr><td><input type="checkbox"></td><td>Arriscando a Própria Pele</td></tr>
+          <tr><td><input type="checkbox"></td><td>Trabalho Focado</td></tr>
+          <tr><td><input type="checkbox" checked></td><td>Tesla</td></tr>
+          <tr><td><input type="checkbox" checked></td><td>O Mais Importante para o Investidor</td></tr>
+          <tr><td><input type="checkbox"></td><td>As 48 Leis do Poder</td></tr>
+          <tr><td><input type="checkbox"></td><td>Linguagem</td></tr>
+          <tr><td><input type="checkbox" checked></td><td>A Meta</td></tr>
+          <tr><td><input type="checkbox"></td><td>Não Tenha Medo de Ser Chefe</td></tr>
+          <tr><td><input type="checkbox" checked></td><td>Quem Pensa Enriquece</td></tr>
+          <tr><td><input type="checkbox" checked></td><td>O Investidor Inteligente</td></tr>
+          <tr><td><input type="checkbox" checked></td><td>A Loja de Tudo</td></tr>
+          <tr><td><input type="checkbox"></td><td>A Estratégia do Oceano Azul</td></tr>
+          <tr><td><input type="checkbox"></td><td>O Príncipe – Nicolau Maquiavel</td></tr>
+          <tr><td><input type="checkbox"></td><td>A Arte da Guerra</td></tr>
+          <tr><td><input type="checkbox"></td><td>Comece pelo Porquê</td></tr>
+          <tr><td><input type="checkbox"></td><td>Fausto</td></tr>
+          <tr><td><input type="checkbox"></td><td>Crime e Castigo</td></tr>
+          <tr><td><input type="checkbox" checked></td><td>O Pequeno Príncipe</td></tr>
+          <tr><td><input type="checkbox"></td><td>A Vida Intelectual</td></tr>
+          <tr><td><input type="checkbox"></td><td>Empatia Assertiva</td></tr>
+          <tr><td><input type="checkbox"></td><td>Como Evitar Preocupações e Começar a Viver</td></tr>
+          <tr><td><input type="checkbox" checked></td><td>Essencialismo</td></tr>
+          <tr><td><input type="checkbox"></td><td>Vida e Trabalho</td></tr>
+          <tr><td><input type="checkbox" checked></td><td>12 Regras para a Vida</td></tr>
+          <tr><td><input type="checkbox" checked></td><td>A Sutil Arte de Ligar o F*da-se</td></tr>
+          <tr><td><input type="checkbox"></td><td>Antifrágil</td></tr>
+          <tr><td><input type="checkbox"></td><td>Nexus</td></tr>
+          <tr><td><input type="checkbox"></td><td>Pai Rico, Pai Pobre</td></tr>
+        </tbody>
+      </table>
+    </section>
   </div>
+  <script>
+    const checkboxes = document.querySelectorAll('#books-table input[type=checkbox]');
+    const progress = document.getElementById('reading-progress');
+    const progressText = document.getElementById('progress-text');
+    function updateProgress() {
+      const total = checkboxes.length;
+      const checked = Array.from(checkboxes).filter(cb => cb.checked).length;
+      progress.value = checked;
+      progressText.textContent = Math.round((checked/total)*100) + '%';
+    }
+    checkboxes.forEach(cb => cb.addEventListener('change', updateProgress));
+    updateProgress();
+  </script>
 </body>
 </html>
